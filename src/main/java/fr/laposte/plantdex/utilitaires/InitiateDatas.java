@@ -34,6 +34,10 @@ public class InitiateDatas implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		
+		plantesRepo.deleteAll();
+		categorieRepo.deleteAll();
+		
 		Categorie planteFleurie = categorieRepo.save(new Categorie("Plante Fleurie"));
 		Categorie planteExterieur = categorieRepo.save(new Categorie("Plante Exterieure"));
 		Categorie planteGrasse = categorieRepo.save(new Categorie("Plante Grasse"));

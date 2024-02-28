@@ -1,5 +1,10 @@
 package fr.laposte.plantdex;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,19 +28,10 @@ PlanteRepository planteRepo;
 @Autowired
 CategorieRepository categorieRepo;
 
-@Autowired
-private List<Plante>plante;
-	
-	@BeforeEach
-	void cleanAndFeed() {
-		
-		planteRepo.deleteAll();
-		/*plante.saveAll(Arrays.asList(plante1, plante2, plante3, plante4, plante5));*/
-		
-		}
-
-		@Test
-		public void tests() {
+		@BeforeEach
+		void cleanAndFeed() {
+			planteRepo.deleteAll();
+			categorieRepo.deleteAll();
 			
 			Categorie planteFleurie = categorieRepo.save(new Categorie("Plante Fleurie"));
 			Categorie planteExterieur = categorieRepo.save(new Categorie("Plante Exterieure"));
@@ -43,22 +39,60 @@ private List<Plante>plante;
 			Categorie planteInterieure = categorieRepo.save(new Categorie("Plante Interieure"));
 			Categorie planteGrimpante = categorieRepo.save(new Categorie("Plante Grimpante"));
 			
+			categorieRepo.saveAll(Arrays.asList(planteFleurie, planteExterieur, planteGrasse, planteInterieure, planteGrimpante));
 			
 			Plante plante1 = new Plante("Rose", planteFleurie, Ensoleillement.BEAUCOUP, 3, "image.com");
 			Plante plante2 = new Plante("Paquerette", planteExterieur , Ensoleillement.MOYEN, 3, "image.com");
 			Plante plante3 = new Plante("Lys", planteGrasse, Ensoleillement.BEAUCOUP, 3, "image.com");
 			Plante plante4 = new Plante("Olivier", planteInterieure, Ensoleillement.MOYEN, 3, "image.com");
 			Plante plante5 = new Plante("Tournesol", planteGrimpante, Ensoleillement.PEU, 3, "image.com");
-			plante.add(plante1);
-			plante.add(plante2);
-			plante.add(plante3);
-			plante.add(plante4);
-			plante.add(plante5);
+			Plante plante6 = new Plante("Laurier", planteGrimpante, Ensoleillement.PEU, 2, "image.com");
+			Plante plante7 = new Plante("Palmier", planteGrasse, Ensoleillement.PEU, 2, "image.com");
 			
-			for (Plante pl : plante) {
-				System.out.println(pl);
+			planteRepo.saveAll(Arrays.asList(plante1, plante2, plante3, plante4, plante5, plante6, plante7));
 		}
+		
+		@Test // ==> OK
+		public void displayAllPlante() {
+			for (Plante p : planteRepo.findAll()) {
+			System.out.println(p);
+			}
+		
+		} 
+		@Test // ==> OK
+		public void displayAllcat () {
+			for (Categorie c : categorieRepo.findAll()) {
+				System.out.println(c);
+				}
+		}
+		
+		@Test
+		public void testsQueryPlanteRepo() {
+			for (Plante p : planteRepo.findByNomEquals("Rose"));
+			System.out.println();
+		}
+		@Test
+		public void testfinByNom() {
+			assertEquals(1, planteRepo.findByNomEquals("Rose").size());
+			assertEquals(1, planteRepo.findByNomEquals("Paquerette").size());
+			assertEquals(1, planteRepo.findByNomEquals("lys").size());
+			assertNotEquals(2, planteRepo.findByNomEquals("Lys").size());
+			assertEquals(1, planteRepo.findByNomEquals("Tournesol").size());
+			
+		}
+		@Test
+		public void testFindByNombis () {
+			assertNotNull(planteRepo.findByNomEquals("rose"));
+			//assertNull(planteRepo.findByNomEquals("roseline"));
+		}
+		@Test
+		public void testFindByEnsoleillement() {
+			assertEquals(2, planteRepo.findBySoleil(Ensoleillement.BEAUCOUP).size());
+			assertNotEquals(3, planteRepo.findBySoleil(Ensoleillement.BEAUCOUP).size());
+			
+			assertEquals(3, planteRepo.findBySoleil(Ensoleillement.PEU).size());
+			assertNotEquals(4, planteRepo.findBySoleil(Ensoleillement.PEU).size());
 			
 			
-	}
+		}
 }

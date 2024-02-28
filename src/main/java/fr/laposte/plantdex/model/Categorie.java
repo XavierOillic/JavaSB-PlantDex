@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
-@AllArgsConstructor
 @RequiredArgsConstructor
 
 public class Categorie {
