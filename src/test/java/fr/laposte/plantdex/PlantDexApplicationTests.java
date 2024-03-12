@@ -48,8 +48,9 @@ CategorieRepository categorieRepo;
 			Plante plante5 = new Plante("Tournesol", planteGrimpante, Ensoleillement.PEU, 3, "image.com");
 			Plante plante6 = new Plante("Laurier", planteGrimpante, Ensoleillement.PEU, 2, "image.com");
 			Plante plante7 = new Plante("Palmier", planteGrasse, Ensoleillement.PEU, 2, "image.com");
+			Plante plante8 = new Plante("Arôme", planteFleurie, Ensoleillement.MOYEN, 2, "image.com");
 			
-			planteRepo.saveAll(Arrays.asList(plante1, plante2, plante3, plante4, plante5, plante6, plante7));
+			planteRepo.saveAll(Arrays.asList(plante1, plante2, plante3, plante4, plante5, plante6, plante7, plante8));
 		}
 		
 		@Test // ==> OK
@@ -92,7 +93,29 @@ CategorieRepository categorieRepo;
 			
 			assertEquals(3, planteRepo.findBySoleil(Ensoleillement.PEU).size());
 			assertNotEquals(4, planteRepo.findBySoleil(Ensoleillement.PEU).size());
-			
-			
 		}
+		
+		@Test
+		public void testFindByCategorie() {
+			for (Categorie c: categorieRepo.findByLibelle("Plante Fleurie")) {
+				System.out.println(c);
+			}
+		}
+		@Test
+		public void testFindByCategorieNombre() {
+			assertNotEquals(2, categorieRepo.findByLibelle("Plante Fleurie").size());
+			assertEquals(1, categorieRepo.findByLibelle("Plante Fleurie").size());
+		}
+		@Test
+		public void testFindByLibelleOrderLibelle () {
+			assertEquals(1, categorieRepo.findByLibelleOrderByLibelle("Plante Fleurie").size());
+			assertNotEquals(3, categorieRepo.findByLibelleOrderByLibelle("Plante Fleurie").size());
+		}
+		
+		@Test
+		public void testFindBySoleilOrderBySoleil() {
+			assertEquals(2, planteRepo.findBySoleilOrderBySoleil(Ensoleillement.BEAUCOUP).size());
+			assertNotEquals(1, planteRepo.findBySoleilOrderBySoleil(Ensoleillement.PEU).size());
+		}
+		
 }

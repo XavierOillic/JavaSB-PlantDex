@@ -12,6 +12,6 @@ public interface PlanteRepository extends JpaRepository<Plante, Long>{
 	
 	List<Plante>findByNomEquals(String nomExact); /* QUERY METHOD */
 	List<Plante>findBySoleil(Ensoleillement soleil);
-	//List<Plante>findByCategorieOrderByNom(Categorie categorie, String nom);
+	List<Plante>findBySoleilOrderBySoleil(Ensoleillement soleil);
 
 }
