@@ -84,7 +84,6 @@ CategorieRepository categorieRepo;
 		@Test
 		public void testFindByNombis () {
 			assertNotNull(planteRepo.findByNomEquals("rose"));
-			//assertNull(planteRepo.findByNomEquals("roseline"));
 		}
 		@Test
 		public void testFindByEnsoleillement() {
@@ -116,6 +115,20 @@ CategorieRepository categorieRepo;
 		public void testFindBySoleilOrderBySoleil() {
 			assertEquals(2, planteRepo.findBySoleilOrderBySoleil(Ensoleillement.BEAUCOUP).size());
 			assertNotEquals(1, planteRepo.findBySoleilOrderBySoleil(Ensoleillement.PEU).size());
+		}
+		@Test
+		public void testFindBySoleilLikeAndNom() {
+			assertEquals(0, planteRepo.findBySoleilLikeAndNom(Ensoleillement.PEU, "Rose").size());
+			assertNotEquals(1, planteRepo.findBySoleilLikeAndNom(Ensoleillement.PEU, "Rose").size());
+			
+			assertEquals(1, planteRepo.findBySoleilLikeAndNom(Ensoleillement.BEAUCOUP, "Lys").size());
+			assertEquals(1, planteRepo.findBySoleilLikeAndNom(Ensoleillement.BEAUCOUP, "Rose").size());
+			
+		}
+		@Test
+		public void testFindByArrosageLikeAndNom() {
+			assertEquals(0, planteRepo.findByArrosageAndNom(1, "Tournesol").size());
+			assertNotEquals(1, planteRepo.findByArrosageAndNom(1, "Tournesol").size());
 		}
 		
 }

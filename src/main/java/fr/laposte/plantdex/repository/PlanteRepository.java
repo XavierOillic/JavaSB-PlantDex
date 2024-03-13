@@ -11,7 +11,13 @@ import fr.laposte.plantdex.model.Plante;
 public interface PlanteRepository extends JpaRepository<Plante, Long>{
 	
 	List<Plante>findByNomEquals(String nomExact); /* QUERY METHOD */
+	
 	List<Plante>findBySoleil(Ensoleillement soleil);
+	
 	List<Plante>findBySoleilOrderBySoleil(Ensoleillement soleil);
+	
+	List<Plante>findBySoleilLikeAndNom(Ensoleillement soleil, String nomExact);
+	
+	List<Plante>findByArrosageAndNom(int arrosage, String nomExact);
 
 }
