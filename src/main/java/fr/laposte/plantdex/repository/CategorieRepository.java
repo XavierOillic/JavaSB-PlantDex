@@ -11,6 +11,7 @@ import fr.laposte.plantdex.model.Plante;
 
 public interface CategorieRepository extends JpaRepository<Categorie, Long>{
 	
-	List<Categorie>findByLibelle(String libelle);
-	List<Categorie>findByLibelleOrderByLibelle(String categorie);
+	Categorie findByLibelle(String libelle);
+	
+	Categorie findByLibelleOrderByLibelle(String categorie);
 }

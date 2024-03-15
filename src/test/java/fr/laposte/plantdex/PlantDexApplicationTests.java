@@ -69,16 +69,17 @@ CategorieRepository categorieRepo;
 		
 		@Test
 		public void testsQueryPlanteRepo() {
-			for (Plante p : planteRepo.findByNomEquals("Rose"));
-			System.out.println();
+			assertNotNull(planteRepo.findByNomEquals("Rose"));
+			assertNull(planteRepo.findByNomEquals("roseline"));
+			
 		}
 		@Test
 		public void testfinByNom() {
-			assertEquals(1, planteRepo.findByNomEquals("Rose").size());
-			assertEquals(1, planteRepo.findByNomEquals("Paquerette").size());
-			assertEquals(1, planteRepo.findByNomEquals("lys").size());
-			assertNotEquals(2, planteRepo.findByNomEquals("Lys").size());
-			assertEquals(1, planteRepo.findByNomEquals("Tournesol").size());
+			assertEquals("Paquerette", planteRepo.findByNomEquals("Paquerette").getNom());
+			assertNotEquals("lys", planteRepo.findByNomEquals("lys").getNom());
+			
+			assertNotEquals(("rose"), planteRepo.findByNomEquals("Rose").getNom());
+			assertNotEquals("1", planteRepo.findByNomEquals("Tournesol").getNom());
 			
 		}
 		@Test
@@ -96,19 +97,21 @@ CategorieRepository categorieRepo;
 		
 		@Test
 		public void testFindByCategorie() {
-			for (Categorie c: categorieRepo.findByLibelle("Plante Fleurie")) {
-				System.out.println(c);
-			}
+			assertNotNull(categorieRepo.findByLibelle("Plante Fleurie"));
+			assertNull(categorieRepo.findByLibelle("Plante"));
+			
+			
 		}
 		@Test
 		public void testFindByCategorieNombre() {
-			assertNotEquals(2, categorieRepo.findByLibelle("Plante Fleurie").size());
-			assertEquals(1, categorieRepo.findByLibelle("Plante Fleurie").size());
+			assertNotEquals("Plante Fleurie", categorieRepo.findByLibelle("Plante Fleurie"));
+			
 		}
 		@Test
 		public void testFindByLibelleOrderLibelle () {
-			assertEquals(1, categorieRepo.findByLibelleOrderByLibelle("Plante Fleurie").size());
-			assertNotEquals(3, categorieRepo.findByLibelleOrderByLibelle("Plante Fleurie").size());
+			assertEquals("Plante Grimpante", categorieRepo.findByLibelleOrderByLibelle("Plante Grimpante").getLibelle());
+			assertNotEquals("Plante Fleurie", categorieRepo.findByLibelleOrderByLibelle("Plante Grimpante").getLibelle());
+			
 		}
 		
 		@Test

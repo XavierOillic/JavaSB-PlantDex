@@ -37,32 +37,35 @@ public class PlanteController {
 	}
 	
 	@GetMapping("/{id}")
-	public Plante get(@PathVariable long id) {
+	public Plante getOne(@PathVariable Long id) {
 		return planteRepo.findById(id).orElseThrow();
 	}
 	
 	@PostMapping
-	public void add(@RequestBody Plante plante, @RequestParam long id) {
+	public void add(@RequestBody Plante plante, @RequestParam Long categorieId) {
 		log.info("Create : " + plante, plante, plante, plante, plante, plante, plante, plante);
-		Categorie categorie = categorieRepo.findById(id).orElseThrow();
+		Categorie categorie = categorieRepo.findById(categorieId).orElseThrow();
 		plante.setCategorie(categorie);
 		planteRepo.save(plante);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
+	public void delete(@PathVariable Long id) {
 		planteRepo.deleteById(id);
 	}
 	
 	@PutMapping("/{id}")
-	public void update (@PathVariable long id, @RequestBody Plante planteUpdate) {
+	public void update (@PathVariable Long id, @RequestBody Plante planteUpdate) {
 		Plante plante = planteRepo.findById(id).orElseThrow();
 		log.info("Create : " + plante, plante, plante, plante, plante, plante, planteUpdate, plante);
 		planteRepo.delete(plante);
 		
 		plante.setNom(planteUpdate.getNom());
-		plante.setArrosage(planteUpdate.getArrosage());
 		plante.setCategorie(planteUpdate.getCategorie());
+		plante.setSoleil(planteUpdate.getSoleil());
+		plante.setArrosage(planteUpdate.getArrosage());
+		plante.setImage(planteUpdate.getImage());
+		
 		
 		log.info("New : "+ plante);
 		planteRepo.save(plante);

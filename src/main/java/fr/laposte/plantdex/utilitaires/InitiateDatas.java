@@ -48,8 +48,10 @@ public class InitiateDatas implements ApplicationRunner {
 		plantesRepo.save(new Plante("Edelweis", planteFleurie, Ensoleillement.BEAUCOUP, 1, "image.com"));
 		plantesRepo.save(new Plante("Marguerite", planteExterieur, Ensoleillement.MOYEN, 2, "image.com"));
 		plantesRepo.save(new Plante("Jonquille", planteGrasse, Ensoleillement.BEAUCOUP, 3, "image.com"));
-		plantesRepo.save(new Plante("Arôme", planteInterieure, Ensoleillement.MOYEN, 1, "image.com"));
-		plantesRepo.save(new Plante("Yuka", planteGrimpante, Ensoleillement.PEU, 3, "image.com"));
+		plantesRepo.save(new Plante("Arôm'atique", planteInterieure, Ensoleillement.MOYEN, 1, "image.com"));
+		plantesRepo.save(new Plante("Yuka Yuka", planteGrimpante, Ensoleillement.PEU, 3, "image.com"));
+		plantesRepo.save(new Plante("Olivier", planteGrimpante, Ensoleillement.PEU, 3, "image.com"));
+		plantesRepo.save(new Plante("Oranger", planteFleurie, Ensoleillement.PEU, 3, "image.com"));
 		
 		
 		for (Plante p : plantesRepo.findAll()) {
