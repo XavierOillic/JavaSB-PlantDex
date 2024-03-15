@@ -17,14 +17,14 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor(access=AccessLevel.PROTECTED)
+@NoArgsConstructor
 @RequiredArgsConstructor
 
 public class Plante {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
+	private long id; // = UUID.randomUUID().toString();
 	
 	@NonNull
 	@Column(unique = true)

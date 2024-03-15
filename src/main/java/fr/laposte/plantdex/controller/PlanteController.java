@@ -55,8 +55,8 @@ public class PlanteController {
 	}
 	
 	@PutMapping("/{id}")
-	public void update (@PathVariable Long id, @RequestBody Plante planteUpdate) {
-		Plante plante = planteRepo.findById(id).orElseThrow();
+	public void update (@PathVariable Long planteId, @RequestBody Plante planteUpdate) {
+		Plante plante = planteRepo.findById(planteId).orElseThrow();
 		log.info("Create : " + plante, plante, plante, plante, plante, plante, planteUpdate, plante);
 		planteRepo.delete(plante);
 		

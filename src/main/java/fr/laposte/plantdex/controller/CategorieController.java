@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.laposte.plantdex.model.Categorie;
@@ -33,8 +34,9 @@ public class CategorieController {
 		return categorieRepo.findById(categorieId).orElseThrow();	
 	}
 	
-	@PostMapping("/{id}")
+	@PostMapping("{id}")
 	public void addOne(@RequestBody Categorie categorie) {
+		
 		categorieRepo.save(categorie);
 		
 	}
