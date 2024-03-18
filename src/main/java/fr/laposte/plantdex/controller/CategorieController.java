@@ -47,7 +47,6 @@ public class CategorieController {
 	
 	@PostMapping("{id}")
 	public void addOne(@RequestBody Categorie categorie) {
-		
 		categorieRepo.save(categorie);
 		
 	}
