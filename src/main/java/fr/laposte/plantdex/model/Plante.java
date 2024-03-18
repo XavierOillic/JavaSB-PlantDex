@@ -34,12 +34,13 @@ public class Plante {
 	@NonNull
 	private Categorie categorie;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING) // parce que j'ai une ENUM et que je veux afficher le libelle
 	@NonNull
 	private Ensoleillement soleil;
 	
 	@NonNull
 	private Integer arrosage;
+	// Je met un Integer, pour bénéficier du @NonNull. L'Integer ne peut pas être NUll.
 	
 	@NonNull
 	private String image;
