@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.laposte.plantdex.model.Categorie;
 import fr.laposte.plantdex.repository.CategorieRepository;
@@ -43,20 +44,23 @@ public class ServicesCategorieImpl implements ServicesCategorie{
 	@Override
 	public CategorieFullDto addCategory(CategorieFullDto dtoCategorie) {
 		
-		Categorie categorieModel = modelMapper.map(dtoCategorie, Categorie.class);
-		return modelMapper.map(categorieRepo.save(categorieModel), CategorieFullDto.class);
+		Categorie categorieAdded = modelMapper.map(dtoCategorie, Categorie.class);
+		return modelMapper.map(categorieRepo.save(categorieAdded), CategorieFullDto.class);
 				
 	}
 	
 	@Override
-	public CategorieFullDto updateCategorie(CategorieFullDto categorie, long categorieId) {
-		// TODO Auto-generated method stub
-		return null;
+	public CategorieFullDto updateCategory(CategorieFullDto categorie, Long categorieId) {
+		
+		Categorie categorieUpdated = modelMapper.map(categorie, Categorie.class);
+		categorieUpdated.setId(categorieId);
+		return modelMapper.map(categorieRepo.save(categorieUpdated), CategorieFullDto.class);
 	}
 
 	@Override
-	public void deletecategorie(long categorieId) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void deletecategory(long categorieId) {
+		categorieRepo.deleteById(categorieId);
 		
 	}
 

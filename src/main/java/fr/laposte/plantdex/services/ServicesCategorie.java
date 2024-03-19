@@ -12,8 +12,8 @@ public interface ServicesCategorie {
 	
 	CategorieFullDto addCategory(CategorieFullDto categorie);
 	
-	CategorieFullDto updateCategorie(CategorieFullDto categorie, long categorieId);
+	CategorieFullDto updateCategory(CategorieFullDto categorie, Long categorieId);
 	
-	void deletecategorie(long categorieId);
+	void deletecategory(long categorieId);
 
 }
