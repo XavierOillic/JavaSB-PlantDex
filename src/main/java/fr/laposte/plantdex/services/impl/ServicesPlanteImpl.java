@@ -42,18 +42,27 @@ public class ServicesPlanteImpl implements ServicesPlante {
 	public PlanteFullDto addPlante(PlanteFullDto dtoPlante) {
 		
 		Categorie categorie = categorieRepo.findByLibelle(dtoPlante.getCategorieLibelle());
+		// Je récupère(FIND) avec la Categorie/cateRepo par le DTO et le GET (CategorieLIbelle du DTO PLante)
 		
 		Plante planteAdded = modelMapper.map(dtoPlante, Plante.class);
+		// Je mappe la plante normale sur la plante DTO
 		
 		planteAdded.setCategorie(categorie);
+		// Je SET la Categorie.
 		
 		return modelMapper.map(planteRepo.save(planteAdded), PlanteFullDto.class);
+		// Je MAP, et je SAVE la PLANTEADDED dans la meme ligne.
 	}
 
 	@Override
-	public PlanteFullDto updatePlante(PlanteFullDto plante, Long planteId) {
-		Plante planteUpdated = modelMapper.map(plante, Plante.class);
-		planteUpdated.setId(planteId);
+	public PlanteFullDto updatePlante(PlanteFullDto dtoPlante, Long planteId) {
+		
+		Categorie categorie = categorieRepo.findByLibelle(dtoPlante.getCategorieLibelle());
+		Plante planteUpdated = planteRepo.findById(planteId).orElseThrow();
+		
+		planteUpdated = modelMapper.map(dtoPlante, Plante.class);
+		planteUpdated.setCategorie(categorie);
+		
 		return modelMapper.map(planteRepo.save(planteUpdated), PlanteFullDto.class);
 	}
 
@@ -62,6 +71,36 @@ public class ServicesPlanteImpl implements ServicesPlante {
 		planteRepo.deleteById(planteId);
 		// Je n'utilise pas le DTO car je DELETE. Seul le REPO est nécessaire.
 		
+	}
+
+	@Override
+	public List<PlanteFullDto> searchByWatering() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanteFullDto> searchBySunshine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanteFullDto> searchBycategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanteFullDto> searchByKeyWords() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanteFullDto> searchAllPlant() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

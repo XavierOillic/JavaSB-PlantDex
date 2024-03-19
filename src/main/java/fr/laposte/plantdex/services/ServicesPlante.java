@@ -16,5 +16,11 @@ public interface ServicesPlante {
 	PlanteFullDto updatePlante(PlanteFullDto plante, Long planteId);
 	
 	void deletePlante (Long planteId);
+	
+	List<PlanteFullDto>searchByWatering();
+	List<PlanteFullDto>searchBySunshine();
+	List<PlanteFullDto>searchBycategory();
+	List<PlanteFullDto>searchByKeyWords();
+	List<PlanteFullDto>searchAllPlant();
 
 }

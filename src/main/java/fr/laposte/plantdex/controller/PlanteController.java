@@ -59,7 +59,7 @@ public class PlanteController {
 	
 	@PutMapping("/{planteId}")
 	public void update (@PathVariable Long planteId, @RequestBody PlanteFullDto planteUpdate) {
-		if (servicePlante.getOneById(planteId)== null)
+		if (servicePlante.getOneById(planteId) == null)
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 				servicePlante.updatePlante(planteUpdate, planteId);	
 	}
