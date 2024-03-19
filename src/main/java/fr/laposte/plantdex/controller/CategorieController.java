@@ -62,7 +62,7 @@ public class CategorieController {
 	public void update(@PathVariable Long categorieId, @RequestBody @Valid CategorieFullDto categoryUpdate) {
 		if (servicesCateg.getOneById(categorieId)== null)
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		servicesCateg.updateCategory(categoryUpdate, categorieId);
+				servicesCateg.updateCategory(categoryUpdate, categorieId);
 	}
 	
 	// DELETE by ID ==> Suppréssion.

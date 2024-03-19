@@ -2,12 +2,12 @@ package fr.laposte.plantdex.services;
 
 import java.util.List;
 
-
+import fr.laposte.plantdex.model.Categorie;
 import fr.laposte.plantdex.services.dto.PlanteFullDto;
 
 public interface ServicesPlante {
 	
-	List<PlanteFullDto>ListPlante();
+	List<PlanteFullDto>listPlante();
 	
 	PlanteFullDto getOneById (Long planteId);
 	
