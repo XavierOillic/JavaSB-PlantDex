@@ -14,7 +14,8 @@ public class PlanteFullDto {
 	private Integer arrosage;
 	private String image;
 	
-	@JsonProperty("Categorie")
+	// Permet de de TRADUIRE ce que j'ai ici en BACK en celui que j'ai dans le FRONT ("categorie")
+	@JsonProperty("categorie")
 	private String categorieLibelle;
 	//Parce que la Plante CONTIENT une Categorie
 }
