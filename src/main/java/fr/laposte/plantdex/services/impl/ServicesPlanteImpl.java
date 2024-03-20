@@ -59,11 +59,17 @@ public class ServicesPlanteImpl implements ServicesPlante {
 		
 		Categorie categorie = categorieRepo.findByLibelle(dtoPlante.getCategorieLibelle());
 		Plante planteUpdated = planteRepo.findById(planteId).orElseThrow();
+		// En entrée de Méthode : l'ID et la CATEGORIE.
 		
 		planteUpdated = modelMapper.map(dtoPlante, Plante.class);
+		// Je transforme le DTO  PLANTE, en Plante normale.
 		planteUpdated.setCategorie(categorie);
+		planteUpdated.setId(planteId);
+		// je modifie la Catégorie et l'id.
 		
 		return modelMapper.map(planteRepo.save(planteUpdated), PlanteFullDto.class);
+		// je sauve grace au Repo, et je transforme planteUpdated type Plante en Type DTO
+		
 	}
 
 	@Override
