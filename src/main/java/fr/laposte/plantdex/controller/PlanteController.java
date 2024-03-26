@@ -72,13 +72,6 @@ public class PlanteController {
 				servicePlante.deletePlante(planteId);
 	}
 	/*
-	 * 
-	@PostMapping
-	public void add(@RequestBody Plante plante, @RequestParam Long categorieId) {
-		Categorie categorie = categorieRepo.findById(categorieId).orElseThrow();
-		plante.setCategorie(categorie);
-		planteRepo.save(plante);
-	}
 	
 	 * 
 	@GetMapping
@@ -94,32 +87,6 @@ public class PlanteController {
 	}
 	
 	
-	@PostMapping
-	public void addOne(@RequestBody Plante plante, @RequestParam Long categorieId) {
-		System.out.println(plante);
-		Plante newPlante = new Plante();
-		Categorie categorie = categorieRepo.findById(categorieId).orElseThrow(); 
-		newPlante.setNom(plante.getNom());
-		newPlante.setSoleil(plante.getSoleil());
-		newPlante.setArrosage(plante.getArrosage());
-		newPlante.setImage(plante.getImage());
-		newPlante.setCategorie(categorie);
-		planteRepo.save(plante);
-	}
-	
-	Plante plante = planteRepo.findById(planteId).orElseThrow();
-		log.info("Modification de : " + plante);
-		planteRepo.delete(plante);
-		
-		plante.setNom(planteUpdate.getNom());
-		plante.setCategorie(planteUpdate.getCategorie());
-		plante.setSoleil(planteUpdate.getSoleil());
-		plante.setArrosage(planteUpdate.getArrosage());
-		plante.setImage(planteUpdate.getImage());
-		
-		
-		log.info("New : "+ plante);
-		planteRepo.save(plante);
 	*/
 
 }

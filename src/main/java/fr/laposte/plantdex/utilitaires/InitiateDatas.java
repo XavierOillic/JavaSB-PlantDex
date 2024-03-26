@@ -35,7 +35,7 @@ public class InitiateDatas implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		plantesRepo.deleteAll();
+		/*plantesRepo.deleteAll();
 		categorieRepo.deleteAll();
 		
 		Categorie planteFleurie = categorieRepo.save(new Categorie("Plante Fleurie"));
@@ -43,6 +43,11 @@ public class InitiateDatas implements ApplicationRunner {
 		Categorie planteGrasse = categorieRepo.save(new Categorie("Plante Grasse"));
 		Categorie planteInterieure = categorieRepo.save(new Categorie("Plante Interieure"));
 		Categorie planteGrimpante = categorieRepo.save(new Categorie("Plante Grimpante"));
+		Categorie Orchides = categorieRepo.save(new Categorie("Orchidés"));
+		Categorie CactusEtPlantesGrasses = categorieRepo.save(new Categorie("Cactus & Plantes grasses"));
+		Categorie Bonsai = categorieRepo.save(new Categorie("Bonsaï"));
+		Categorie PlantesVertes = categorieRepo.save(new Categorie("Plantes Vertes"));
+		Categorie PalmiersInterieur = categorieRepo.save(new Categorie("Palmiers d'Intérieur"));
 		
 		
 		plantesRepo.save(new Plante("Edelweis", planteFleurie, Ensoleillement.BEAUCOUP, 1, "image.com"));
@@ -51,12 +56,17 @@ public class InitiateDatas implements ApplicationRunner {
 		plantesRepo.save(new Plante("Arôm'atique", planteInterieure, Ensoleillement.MOYEN, 1, "image.com"));
 		plantesRepo.save(new Plante("Yuka Yuka", planteGrimpante, Ensoleillement.PEU, 3, "image.com"));
 		plantesRepo.save(new Plante("Olivier", planteGrimpante, Ensoleillement.PEU, 3, "image.com"));
-		plantesRepo.save(new Plante("Oranger", planteFleurie, Ensoleillement.PEU, 3, "image.com"));
+		plantesRepo.save(new Plante("Rose", planteFleurie, Ensoleillement.PEU, 3, "image.com"));
+		plantesRepo.save(new Plante("Orchidés", Orchides, Ensoleillement.BEAUCOUP, 2, "image.com"));
+		plantesRepo.save(new Plante("cactus", CactusEtPlantesGrasses, Ensoleillement.BEAUCOUP, 2, "image.com"));
+		plantesRepo.save(new Plante("Bonsaï", Bonsai, Ensoleillement.BEAUCOUP, 2, "image.com"));
+		plantesRepo.save(new Plante("Arôme", PlantesVertes, Ensoleillement.BEAUCOUP, 2, "image.com"));
+		plantesRepo.save(new Plante("Palmier d'interieur", PalmiersInterieur, Ensoleillement.BEAUCOUP, 2, "image.com"));
 		
 		
 		for (Plante p : plantesRepo.findAll()) {
 			System.out.println(p);
-		}
+		}*/
 		
 	}
 
